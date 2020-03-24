@@ -12,6 +12,7 @@ version: '3.2'
 services:
   nginx-exporter:  
     image: {{docker_image}}
+    command: /usr/bin/prometheus-nginx-exporter
     restart: always
     hostname: {{hostname}} 
     container_name: nginx-exporter
@@ -23,7 +24,7 @@ services:
 
   nginx-log-exporter:
     image: {{docker_image}}
-    command: -config-file /etc/prometheus-nginxlog-exporter.hcl
+    command: /usr/bin/prometheus-nginxlog-exporter -config-file /etc/prometheus-nginxlog-exporter.hcl
     restart: always
     hostname: {{hostname}} 
     container_name: nginx-log-exporter
